@@ -24,7 +24,74 @@
      */
 
     // TODO Votre code ici, commencez par require un des objet de connexion que nous avons fait ensemble.
+    try {
+        $server = 'localhost';
+        $db = 'bdd_196';
+        $user = 'root';
+        $pass = '';
 
+        $bdd = new PDO("mysql:host=$server;dbname=$db;charset=utf8",$user,$pass);
+                $stmt = $bdd->prepare("SELECT MIN(age) FROM db_cours.user");
+                $state= $stmt->execute();
+                if($state){
+                    $min = $stmt->fetch();
+                    echo "<pre>";
+                    print_r($min);
+                    echo "<pre>";
+                }
+
+                $stmt = $bdd->prepare("SELECT MAX(age) FROM db_cours.user");
+                $state= $stmt->execute();
+                if($state){
+                   $min = $stmt->fetch();
+                    echo "<pre>";
+                    print_r($min);
+                   echo "<pre>";
+                }
+                $stmt = $bdd->prepare("SELECT count(*) as number FROM db_cours.user");
+                $state= $stmt->execute();
+                if($state){
+                    $min = $stmt->fetch();
+                    echo "<pre>";
+                    print_r($min);
+                    echo "<pre>";
+                }
+
+                $stmt = $bdd->prepare("SELECT MAX(numero) FROM db_cours.user");
+                $state= $stmt->execute();
+                if($state){
+                    $min = $stmt->fetch();
+                    echo "<pre>";
+                    print_r($min);
+                    echo "<pre>";
+                }
+
+                $stmt = $bdd->prepare("SELECT AVG(age) as moyenne_age FROM db_cours.user");
+                $state= $stmt->execute();
+                if($state){
+                    $min = $stmt->fetch();
+                    echo "<pre>";
+                    print_r($min);
+                    echo "<pre>";
+                }
+
+        $stmt = $bdd->prepare("SELECT SUM(numero) as somme_num FROM db_cours.user");
+        $state= $stmt->execute();
+        if($state){
+            $min = $stmt->fetch();
+            echo "<pre>";
+            print_r($min);
+            echo "<pre>";
+        }
+
+
+
+
+    }
+
+    catch (PDOException $exception){
+        echo $exception->getMessage();
+    }
 
     ?>
 </body>
